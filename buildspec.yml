@@ -1,9 +1,7 @@
 version: 0.1
 
-env:
-  variables:
-    TODOS_ENDPOINT: "nw8u016qyd.execute-api.us-east-1.amazonaws.com/dev/"
-  parameter-store:
+environment_variables:
+  plaintext:
     TODOS_ENDPOINT: "nw8u016qyd.execute-api.us-east-1.amazonaws.com/dev/"
 
 phases:
