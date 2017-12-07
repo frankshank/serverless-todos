@@ -1,12 +1,13 @@
 var assert = require('assert');
 var request = require('request');
 var fs = require('fs');
+var TODOS_ENDPOINT = 'nw8u016qyd.execute-api.us-east-1.amazonaws.com/dev'
 
 describe('Create, Read, Delete', function() {
 	this.timeout(5000);
     it('should create a new Todo, read it, & delete it', function(done) {
 		// Build and log the path
-		var path = "https://" + process.env.TODOS_ENDPOINT + "/todos";
+		var path = "https://" + TODOS_ENDPOINT + "/todos";
 
 		// Fetch the comparison payload
 		require.extensions['.txt'] = function (module, filename) {
