@@ -3,6 +3,8 @@ version: 0.1
 env:
   variables:
     TODOS_ENDPOINT: "nw8u016qyd.execute-api.us-east-1.amazonaws.com/dev/"
+  parameter-store:
+    TODOS_ENDPOINT: "nw8u016qyd.execute-api.us-east-1.amazonaws.com/dev/"
 
 phases:
   install:
