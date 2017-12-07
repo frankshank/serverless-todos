@@ -6,7 +6,7 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 module.exports.get = (event, context, callback) => {
   const params = {
-	// PCJ: Minor change from original, use environment variable for stage sensitive table name
+	  // PCJ: Minor change from original, use environment variable for stage sensitive table name
     TableName: process.env.TABLE_NAME,
     Key: {
       id: event.pathParameters.id,
