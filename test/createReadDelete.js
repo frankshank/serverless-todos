@@ -7,7 +7,7 @@ describe('Create, Read, Delete', function() {
 	this.timeout(5000);
     it('should create a new Todo, read it, & delete it', function(done) {
 		// Build and log the path
-		var path = "https://" + TODOS_ENDPOINT + "/todos";
+		var path = `https://${TODOS_ENDPOINT}/todos`;
 
 		// Fetch the comparison payload
 		require.extensions['.txt'] = function (module, filename) {
@@ -17,28 +17,28 @@ describe('Create, Read, Delete', function() {
 		
 		// Create the new todo
 		var options = {'url' : path, 'form': JSON.stringify(desiredPayload)};
- 		request.post(options, function (err, res, body){ 
-			if(err){
-				throw new Error("Create call failed: " + err);
+ 		request.post(options, function (err, res, body) { 
+			if (err) {
+				throw new Error(`Create call failed: $err`);
 			}
-			assert.equal(200, res.statusCode, "Create Status Code != 200 (" + res.statusCode + ")");
+			assert.equal(200, res.statusCode, `Create Status Code != 200 ("${res.statusCode}")`);
 			var todo = JSON.parse(res.body);
 			// Read the item
 			var specificPath = path + "/" + todo.id;
-			request.get(path, function (err, res, body){ 
-				if(err){
+			request.get(path, function (err, res, body) { 
+				if (err) {
 					throw new Error("Read call failed: " + err);
 				}
-				assert.equal(200, res.statusCode, "Read Status Code != 200 (" + res.statusCode + ")");
+				assert.equal(200, res.statusCode, `Read Status Code != 200 "${res.statusCode}")`);
 				
 				var todoList = JSON.parse(res.body);
 				if(todoList.text = desiredPayload.text)	{
 					// Item found, delete it
 		 			request.del(specificPath, function (err, res, body){ 
-						if(err){
+						if (err) {
 							throw new Error("Delete call failed: " + err);
 						}
-						assert.equal(200, res.statusCode, "Delete Status Code != 200 (" + res.statusCode + ")"); 
+						assert.equal(200, res.statusCode, `Delete Status Code != 200 ("${res.statusCode}")`); 
 						done();   
 		  			});
 				} else {
